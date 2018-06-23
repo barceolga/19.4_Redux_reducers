@@ -57,7 +57,7 @@ function reducer (state = initialState, action) {
           comments: state.comments.find(comment => comment.id === action.id),
           comment: {
             id: comment.id,
-            votes: action.votes +1
+            votes: action.votes
           }
         });
   case THUMB_DOWN_COMMENT:
@@ -65,7 +65,7 @@ function reducer (state = initialState, action) {
           comments: state.comments.find(comment => comment.id === action.id),
           comment: {
             id: comment.id,
-            votes: action.votes -1
+            votes: action.votes
           }
         });
   default:
