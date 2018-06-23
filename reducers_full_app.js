@@ -3,6 +3,11 @@ import {REMOVE_COMMENT} from './actions';
 import {EDIT_COMMENT} from './actions';
 import {THUMB_UP_COMMENT} from './actions';
 import {THUMB_DOWN_COMMENT} from './actions';
+import addComment from './actions';
+import removeComment from './actions';
+import editComment from './actions';
+import thumbUpComment from './actions';
+import thumbDownComment from './actions';
 
 //Defining an initial state
 
@@ -24,18 +29,17 @@ function reducer(state, action) {
 // Reducer for administrating the state of the whole aplication:
 
 function reducer (state = initialState, action) {
-  swith(action.type) {
+  switch(action.type) {
     case ADD_COMMENT:
         return Object.assign({}, state {
           comments: [
             {
                 id: action.id,
-                text: action.text
+                text: action.text,
                 votes: 0
             }
           , ...state]
-        })
-  })
+        });
   case REMOVE_COMMENT:
       return Object.assign({}, state, {
           comments: state.comments.filter(comment => comment.id !== action.id)
@@ -44,29 +48,27 @@ function reducer (state = initialState, action) {
       return Object.assign({}, state {
           comments: state.comments.find(comment => comment.id === action.id),
           comment: {
-            id: action.id,
-            text: action.text,
-            votes: 0
+            id: comment.id,
+            text: action.text
           }
         });
   case THUMB_UP_COMMENT:
       return Object.assign({}, state {
           comments: state.comments.find(comment => comment.id === action.id),
           comment: {
-            id: action.id,
-            text: action.text,
-            votes: +1
+            id: comment.id,
+            votes: action.votes +1
           }
         });
   case THUMB_DOWN_COMMENT:
       return Object.assign({}, state {
           comments: state.comments.find(comment => comment.id === action.id),
           comment: {
-            id: action.id,
-            text: action.text,
-            votes: -1
+            id: comment.id,
+            votes: action.votes -1
           }
         });
   default:
       return state;
+  }
 }
