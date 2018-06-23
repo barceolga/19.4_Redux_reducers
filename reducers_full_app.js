@@ -46,28 +46,31 @@ function reducer (state = initialState, action) {
       });
   case EDIT_COMMENT:
       return Object.assign({}, state {
-          comments: state.comments.find(comment => comment.id === action.id),
-          comment: {
-            id: comment.id,
-            text: action.text
-          }
+          comments: state.comments.map(comment => {
+              if(comment.id === action.id) {
+                  comment.text: action.text
+              }
+                return comment;
+          });
         });
   case THUMB_UP_COMMENT:
       return Object.assign({}, state {
-          comments: state.comments.find(comment => comment.id === action.id),
-          comment: {
-            id: comment.id,
-            votes: action.votes
-          }
+          comments: state.comments.map(comment => {
+              if(comment.id === action.id) {
+               comment.votes++;
+              }
+                return comment;
+          });
         });
   case THUMB_DOWN_COMMENT:
       return Object.assign({}, state {
-          comments: state.comments.find(comment => comment.id === action.id),
-          comment: {
-            id: comment.id,
-            votes: action.votes
-          }
-        });
+          comments: state.comments.map(comment => {
+              if(comment.id === action.id) {
+               comment.votes--;
+              }
+                return comment;
+              });
+          });
   default:
       return state;
   }
