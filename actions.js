@@ -3,21 +3,18 @@ import uuid from uuid;
 
 //Examples of types of actions in Redux
 const ADD_COMMENT = 'ADD_COMMENT';
-
 {
   type: ADD_COMMENT,
   text: 'My first comment'
 }
 
 const REMOVE_COMMENT = 'REMOVE_COMMENT';
-
 {
   type: REMOVE_COMMENT,
   id: 15 // it's an exaple of a comment's id to remove
 }
 
 const EDIT_COMMENT = 'EDIT_COMMENT';
-
 {
   type: EDIT_COMMENT,
   id: 15,
@@ -25,7 +22,6 @@ const EDIT_COMMENT = 'EDIT_COMMENT';
 }
 
 const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
-
 {
   type: THUMB_UP_COMMENT,
   votes: +1,
@@ -33,7 +29,6 @@ const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
 }
 
 const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
-
 {
   type: THUMB_DOWN_COMMENT,
   votes: -1,
