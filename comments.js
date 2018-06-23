@@ -23,15 +23,37 @@ export default function comments (state = [], action) {
                   votes: 0
               }
             , ...state.comments]
+
     case REMOVE_COMMENT:
         return  state.comments.filter(comment => comment.id !== action.id);
+
     case EDIT_COMMENT:
-        return  state.comments.find(comment => comment.id === action.id).concat([action.text]);
+        const editedComments =  state.comments.map(comment => {
+            if(comment.id === action.id) {
+                comment.text: action.text
+            }
+              return comment;
+        });
+        return  editedComments;
+
     case THUMB_UP_COMMENT:
-        return state.comments.find(comment => comment.id === action.id).concat([action.votes]);
+        const upvotedComments = state.comments.map(comment => {
+            if(comment.id === action.id) {
+             comment.votes++;
+            }
+              return comment;
+        });
+        return upvotedComments;
 
     case THUMB_DOWN_COMMENT:
-        return  state.comments.find(comment => comment.id === action.id).concat([action.votes]);
+        const downvotedComments = state.comments.map(comment => {
+            if(comment.id === action.id) {
+             comment.votes--;
+            }
+              return comment;
+        });
+        return downvotedComments;
+
     default:
         return state;
     }
