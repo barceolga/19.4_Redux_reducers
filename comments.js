@@ -8,7 +8,7 @@ import {THUMB_DOWN_COMMENT} from './actions';
 
 // Creating a reducer for administrating comments' state
 
-const comments = function comments (state = [], action) {
+let comments = function comments (state = [], action) {
   swith(action.type) {
     case ADD_COMMENT:
         return  [
@@ -49,4 +49,4 @@ const comments = function comments (state = [], action) {
       return state;
 }
 
-export const comments;
+export let comments;
