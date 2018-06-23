@@ -28,10 +28,10 @@ export default function comments (state = [], action) {
     case EDIT_COMMENT:
         return  state.comments.find(comment => comment.id === action.id).concat([comment.id, action.text]);
     case THUMB_UP_COMMENT:
-        return comments: state.comments.find(comment => comment.id === action.id).concat([comment.id, action.votes +1]);
+        return state.comments.find(comment => comment.id === action.id).concat([comment.id, action.votes +1]);
 
     case THUMB_DOWN_COMMENT:
-        return comments: state.comments.find(comment => comment.id === action.id).concat([comment.id,action.votes -1]);
+        return  state.comments.find(comment => comment.id === action.id).concat([comment.id,action.votes -1]);
     default:
         return state;
     }
