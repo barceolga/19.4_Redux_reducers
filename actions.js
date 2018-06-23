@@ -36,8 +36,7 @@ const THUMB_UP_COMMENT = 'THUMB_UP_COMMENT';
 export function thumbUpComment(votes) {
   return {
     type: THUMB_UP_COMMENT.
-    votes: +1,
-    id: uuid.v4()
+    id: comment.id
   }
 }
 
@@ -46,8 +45,7 @@ const THUMB_DOWN_COMMENT = 'THUMB_DOWN_COMMENT';
 export function thumbDownComment(votes) {
   return {
     type: THUMB_DOWN_COMMENT,
-    votes: -1,
-    id: uuid.v4()
+    id: comment.id
   }
 }
 
