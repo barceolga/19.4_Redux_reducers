@@ -4,13 +4,6 @@ import {combineReducers} from 'redux';
 import comments from './comments';
 import users from './users';
 
-//Using the combineReducers function to combine the two small reducers
-
-const app = combineReducers({
-  comments,
-  users
-});
-
 //Defining an initial state
 
 const initialState = {
@@ -20,9 +13,7 @@ const initialState = {
 
 // Main Reducer
 
-function app(state = initialState, action) {
-  return{
-    comments: comments(state.comments, action),
-    users: users(state.users, action)
-  };
-}
+export const app = combineReducers({
+  comments,
+  users
+});
