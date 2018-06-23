@@ -26,12 +26,12 @@ export default function comments (state = [], action) {
     case REMOVE_COMMENT:
         return  state.comments.filter(comment => comment.id !== action.id);
     case EDIT_COMMENT:
-        return  state.comments.find(comment => comment.id === action.id).concat([comment.id, action.text]);
+        return  state.comments.find(comment => comment.id === action.id).concat([action.text]);
     case THUMB_UP_COMMENT:
-        return state.comments.find(comment => comment.id === action.id).concat([comment.id, action.votes +1]);
+        return state.comments.find(comment => comment.id === action.id).concat([action.votes]);
 
     case THUMB_DOWN_COMMENT:
-        return  state.comments.find(comment => comment.id === action.id).concat([comment.id,action.votes -1]);
+        return  state.comments.find(comment => comment.id === action.id).concat([action.votes]);
     default:
         return state;
     }
