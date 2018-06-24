@@ -1,15 +1,13 @@
-// Importing the necessary action's types:
 
-import {ADD_COMMENT} from './actions';
-import {REMOVE_COMMENT} from './actions';
-import {EDIT_COMMENT} from './actions';
-import {THUMB_UP_COMMENT} from './actions';
-import {THUMB_DOWN_COMMENT} from './actions';
-import addComment from './actions';
-import removeComment from './actions';
-import editComment from './actions';
-import thumbUpComment from './actions';
-import thumbDownComment from './actions';
+/*jshint esversion: 6*/
+// Importing the necessary action's types:
+import {
+  ADD_COMMENT,
+  REMOVE_COMMENT,
+  EDIT_COMMENT,
+  THUMB_UP_COMMENT,
+  THUMB_DOWN_COMMENT,
+} from './actions';
 
 // Creating a reducer for administrating comments' state
 
@@ -22,7 +20,7 @@ export default function comments (state = [], action) {
                   text: action.text,
                   votes: 0
               }
-            , ...state.comments]
+            , ...state.comments];
 
     case REMOVE_COMMENT:
         return  state.comments.filter(comment => comment.id !== action.id);
@@ -30,11 +28,11 @@ export default function comments (state = [], action) {
     case EDIT_COMMENT:
         const editedComments =  state.comments.map(comment => {
             if(comment.id === action.id) {
-                comment.text: action.text
+                comment.text = action.text;
             }
               return comment;
         });
-        return  editedComments;
+        return editedComments;
 
     case THUMB_UP_COMMENT:
         const upvotedComments = state.comments.map(comment => {
