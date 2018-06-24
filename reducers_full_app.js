@@ -1,20 +1,18 @@
-import {ADD_COMMENT} from './actions';
-import {REMOVE_COMMENT} from './actions';
-import {EDIT_COMMENT} from './actions';
-import {THUMB_UP_COMMENT} from './actions';
-import {THUMB_DOWN_COMMENT} from './actions';
-import addComment from './actions';
-import removeComment from './actions';
-import editComment from './actions';
-import thumbUpComment from './actions';
-import thumbDownComment from './actions';
+/*jshint esversion: 6*/
+import {
+  ADD_COMMENT,
+  REMOVE_COMMENT,
+  EDIT_COMMENT,
+  THUMB_UP_COMMENT,
+  THUMB_DOWN_COMMENT,
+} from './actions';
 
 //Defining an initial state
 
 const initialState = {
   comments: [],
   users: []
-}
+};
 
 //First reducer using ES5 standard
 /*
@@ -31,7 +29,7 @@ function reducer(state, action) {
 function reducer (state = initialState, action) {
   switch(action.type) {
     case ADD_COMMENT:
-        return Object.assign({}, state {
+        return Object.assign({}, state, {
           comments: [
             {
                 id: action.id,
@@ -45,31 +43,31 @@ function reducer (state = initialState, action) {
           comments: state.comments.filter(comment => comment.id !== action.id)
       });
   case EDIT_COMMENT:
-      return Object.assign({}, state {
+      return Object.assign({}, state, {
           comments: state.comments.map(comment => {
               if(comment.id === action.id) {
-                  comment.text: action.text
+                  comment.text = action.text;
               }
                 return comment;
-          });
+          })
         });
   case THUMB_UP_COMMENT:
-      return Object.assign({}, state {
+      return Object.assign({}, state, {
           comments: state.comments.map(comment => {
               if(comment.id === action.id) {
                comment.votes++;
               }
                 return comment;
-          });
+          })
         });
   case THUMB_DOWN_COMMENT:
-      return Object.assign({}, state {
+      return Object.assign({}, state, {
           comments: state.comments.map(comment => {
               if(comment.id === action.id) {
                comment.votes--;
               }
                 return comment;
-              });
+              })
           });
   default:
       return state;
