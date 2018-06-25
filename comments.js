@@ -28,7 +28,7 @@ export default function comments (state = [], action) {
     case EDIT_COMMENT:
         const editedComments =  state.comments.map(comment => {
             if(comment.id === action.id) {
-                comment.text = action.text;
+                text = action.text
             }
               return comment;
         });
@@ -37,7 +37,7 @@ export default function comments (state = [], action) {
     case THUMB_UP_COMMENT:
         const upvotedComments = state.comments.map(comment => {
             if(comment.id === action.id) {
-             comment.votes++;
+              comment.votes++
             }
               return comment;
         });
@@ -46,7 +46,7 @@ export default function comments (state = [], action) {
     case THUMB_DOWN_COMMENT:
         const downvotedComments = state.comments.map(comment => {
             if(comment.id === action.id) {
-             comment.votes--;
+              comment.votes--
             }
               return comment;
         });
